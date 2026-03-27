@@ -1,4 +1,5 @@
 # GENERATION-AND-DETECTION-OF-AM_1
+
 ## AIM:
 To generate and detect the amplitude modulation and demodulation u s i n g S C I L A B and to calculate modulation index of AM.
 
@@ -83,13 +84,51 @@ Note: Keep all the switch faults in off position
 <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/7bc77926-9c2a-42c6-994b-6c67433b11d2" />
 
 ## PROGRAM:
+
+ Am = 7;
+Ac = 14;
+fm = 653;
+fc = 6530;
+fs = 653000;
+t = 0:1/fs:2/fm;
+m = Am * cos(2*3.14*fm*t);
+c = Ac * cos(2*3.14*fc*t);
+s = (Ac + m) .* cos(2*3.14*fc*t);
+envelope_signal = abs(hilbert(s));
+demod = envelope_signal - Ac;
+subplot(4,1,1);
+plot(t, m, 'b');
+title('Message Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,2);
+plot(t, c, 'r');
+title('Carrier Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,3);
+plot(t, s, 'k');
+title('AM Modulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(4,1,4);
+plot(t, demod, 'g');
+title('Demodulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
  
 ## TABULATION:
 
-## CALCULATION:
 
-
+![521933048-46a496a8-4c53-4944-a56c-0a5f1bb12fc9](https://github.com/user-attachments/assets/6ed139e8-531b-4c8b-a291-3fee681e8f99)
 
 ## OUTPUT:
 
+![521933201-3cf09fcc-31c1-432b-bb66-ef84e69085ae](https://github.com/user-attachments/assets/45549908-3b5b-4b1f-9131-36a6021b8367)
+
 ## RESULT:
+
+![521933262-e5159ffe-2751-45ff-99bd-32f9820cf047](https://github.com/user-attachments/assets/579efe43-da58-4db7-8377-61a6670b2ee9)
